@@ -300,5 +300,10 @@ public class MainCtrl implements Initializable {
     @FXML
     private void menuRechercher(ActionEvent event) {
         String nomARechercher = JfxPopup.askInfo("Recherche", "Rechercher une personne avec le son nom", "Insérer le nom à rechercher");
+        try {
+            afficherPersonne(dbWrk.rechercherPersonneAvecNom(nomARechercher));
+        } catch (MyDBException ex) {
+            JfxPopup.displayError("ERREUR", null, ex.getMessage());
+        }
     }
 }

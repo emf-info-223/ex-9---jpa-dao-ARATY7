@@ -77,8 +77,7 @@ public class DbWorker implements DbWorkerItf {
 
     @Override
     public Personne rechercherPersonneAvecNom(String nomARechercher) throws MyDBException {
-        // TODO
-        return null;
+        return persWrk.rechercher("nom", nomARechercher);
     }
 
     @Override

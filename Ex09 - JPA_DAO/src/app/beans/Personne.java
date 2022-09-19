@@ -212,7 +212,7 @@ public class Personne implements Serializable {
 
     @Override
     public String toString() {
-        return "app.beans.Personne[ pkPers=" + pkPers + " ]";
+        return this.nom;
     }
     
 }

@@ -164,8 +164,10 @@ public class JpaDao<E, PK> implements JpaDaoItf<E, PK> {
     @Override
     @SuppressWarnings("unchecked")
     public E rechercher(String prop, Object valeur) throws MyDBException {
-        // TODO
-        return null;
+        Query query = em.createQuery("SELECT p FROM Personne p WHERE p." + prop + "=:val");
+        query.setParameter("val", valeur);
+        E e = (E) query.getSingleResult();
+        return e;
     }
 
     /**
