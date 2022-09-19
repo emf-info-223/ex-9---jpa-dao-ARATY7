@@ -5,6 +5,7 @@
 package app.beans;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
@@ -53,6 +54,9 @@ public class Departement implements Serializable {
     @OneToMany(mappedBy = "fkDep")
     private List<Personne> personneList;
 
+    @Column(name = "test")
+    private Timestamp t;
+    
     public Departement() {
     }
 

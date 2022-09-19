@@ -88,7 +88,11 @@ public class DbWorker implements DbWorkerItf {
     @Override
     public int lireEtSauverLocalites(File fichier, String nomCharset) throws Exception {
         List<Localite> liste = ficLocWrk.lireFichierTexte(fichier, nomCharset);
-        return locWrk.sauverListe(liste);
+        int res = 0;
+        if (liste != null && !liste.isEmpty()) {
+            res = locWrk.sauverListe(liste);
+        }
+        return res;
     }
 
     @Override

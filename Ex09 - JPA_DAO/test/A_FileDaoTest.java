@@ -5,6 +5,7 @@ import app.exceptions.MyDBException;
 import app.exceptions.MyFileException;
 import app.helpers.SystemLib;
 import app.workers.dao.FileDao;
+import app.workers.dao.FileDaoItf;
 import app.workers.extracters.DepartementExtracter;
 import app.workers.extracters.LocaliteExtracter;
 import java.io.File;
@@ -17,7 +18,6 @@ import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
-import app.workers.dao.FileDaoItf;
 
 /**
  * Classe de test des méthodes de lecture de fichiers "texte" avec séparateur
@@ -29,8 +29,8 @@ import app.workers.dao.FileDaoItf;
 public class A_FileDaoTest {
 
     static final String NOM_DOSSIER_DATA = "data";
-    static final String NOM_FICHIER_LOC = "npa_ch_20140818_utf8.txt";
-    static final String NOM_FICHIER_DEP = "departements_utf8.txt";
+    static final String NOM_FICHIER_LOC = "npa_ch_20140818.txt";
+    static final String NOM_FICHIER_DEP = "departements.txt";
 
     @BeforeClass
     public static void setUpClass() throws Exception {
