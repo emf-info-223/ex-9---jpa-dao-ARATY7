@@ -8,6 +8,8 @@ import javax.persistence.EntityManager;
  * Définit les services minimaux de la couche DAO (écrite pour JPA).
  *
  * @author Jean-Claude Stritt et Pierre-Alain Mettraux
+ * @param <E>
+ * @param <PK>
  */
 public interface JpaDaoItf<E, PK> {
 

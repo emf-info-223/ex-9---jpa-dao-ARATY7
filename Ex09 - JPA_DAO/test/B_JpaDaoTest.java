@@ -1,23 +1,26 @@
 
+import app.beans.Departement;
+import app.beans.Localite;
+import app.beans.Personne;
 import app.exceptions.MyDBException;
 import app.helpers.DateTimeLib;
 import app.helpers.SystemLib;
 import app.workers.dao.FileDao;
+import app.workers.dao.FileDaoItf;
 import app.workers.dao.JpaDao;
+import app.workers.dao.JpaDaoItf;
 import app.workers.extracters.DepartementExtracter;
 import app.workers.extracters.LocaliteExtracter;
 import java.math.BigDecimal;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 import org.junit.AfterClass;
+import static org.junit.Assert.assertTrue;
 import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.MethodSorters;
-import static org.junit.Assert.assertTrue;
-import app.workers.dao.FileDaoItf;
-import app.workers.dao.JpaDaoItf;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
 
 /**
  * Test des principales fonctionnalités de la couche DAO sur une base de données MySql. Les données pour monter la base
@@ -159,7 +162,8 @@ public class B_JpaDaoTest {
 
   @Test
   public void g_testerRechercher() throws MyDBException {
-
+      System.out.println("*** " + SystemLib.getCurrentMethod() + " ...");
+      
   }
 
   @Test

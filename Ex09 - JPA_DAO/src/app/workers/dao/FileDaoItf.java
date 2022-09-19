@@ -8,6 +8,7 @@ import java.util.List;
  * fichiers "texte" contenant des données tabulaires.
  *
  * @author Jean-Claude Stritt
+ * @param <E>
  */
 public interface FileDaoItf<E> {
 
