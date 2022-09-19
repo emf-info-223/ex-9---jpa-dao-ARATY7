@@ -6,6 +6,7 @@ package app.beans;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -20,6 +21,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Version;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
@@ -66,9 +68,9 @@ public class Personne implements Serializable {
     @Column(name = "Salaire")
     private BigDecimal salaire;
     @Basic(optional = false)
+    @Version
     @Column(name = "date_modif")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date dateModif;
+    private Timestamp dateModif;
     @Basic(optional = false)
     @Column(name = "no_modif")
     private int noModif;
@@ -86,7 +88,7 @@ public class Personne implements Serializable {
         this.pkPers = pkPers;
     }
 
-    public Personne(Integer pkPers, Date dateModif, int noModif) {
+    public Personne(Integer pkPers, Timestamp dateModif, int noModif) {
         this.pkPers = pkPers;
         this.dateModif = dateModif;
         this.noModif = noModif;
@@ -156,11 +158,11 @@ public class Personne implements Serializable {
         this.salaire = salaire;
     }
 
-    public Date getDateModif() {
+    public Timestamp getDateModif() {
         return dateModif;
     }
 
-    public void setDateModif(Date dateModif) {
+    public void setDateModif(Timestamp dateModif) {
         this.dateModif = dateModif;
     }
 

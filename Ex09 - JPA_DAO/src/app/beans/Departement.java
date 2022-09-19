@@ -123,7 +123,7 @@ public class Departement implements Serializable {
 
     @Override
     public String toString() {
-        return "app.beans.Departement[ pkDep=" + pkDep + " ]";
+        return this.departement;
     }
     
 }

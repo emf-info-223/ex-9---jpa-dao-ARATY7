@@ -116,7 +116,7 @@ public class Localite implements Serializable {
 
     @Override
     public String toString() {
-        return "app.beans.Localite[ pkLoc=" + pkLoc + " ]";
+        return this.localite;
     }
     
 }
