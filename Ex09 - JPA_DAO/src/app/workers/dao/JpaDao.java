@@ -47,6 +47,14 @@ public class JpaDao<E, PK> implements JpaDaoItf<E, PK> {
      */
     @Override
     public void creer(E e) throws MyDBException {
+        try {
+            et.begin();
+            em.persist(e);
+            et.commit();
+        } catch (Exception ex) {
+            et.rollback();
+            throw new MyDBException(SystemLib.getFullMethodName(), ex.getMessage());
+        }
     }
 
     /**
@@ -156,6 +164,7 @@ public class JpaDao<E, PK> implements JpaDaoItf<E, PK> {
     @Override
     @SuppressWarnings("unchecked")
     public E rechercher(String prop, Object valeur) throws MyDBException {
+        // TODO
         return null;
     }
 
@@ -188,8 +197,7 @@ public class JpaDao<E, PK> implements JpaDaoItf<E, PK> {
      */
     @Override
     public int effacerListe() throws MyDBException {
-        int nb;
-        return nb;
+        return 0;
     }
 
     /**
@@ -201,15 +209,9 @@ public class JpaDao<E, PK> implements JpaDaoItf<E, PK> {
      */
     @Override
     public int sauverListe(List<E> list) throws MyDBException {
-        int nb = 0;
-        return nb;
+        return 0;
     }
 
-    /**
-     * Déconnexion
-     *
-     * @throws app.exceptions.MyDBException
-     */
     @Override
     public void deconnecter() {
         em.close();

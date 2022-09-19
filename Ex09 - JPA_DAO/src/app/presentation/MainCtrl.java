@@ -1,6 +1,8 @@
 package app.presentation;
 
-
+import app.beans.Departement;
+import app.beans.Localite;
+import app.beans.Personne;
 import app.exceptions.MyDBException;
 import app.helpers.DateTimeLib;
 import app.helpers.JfxPopup;
@@ -12,8 +14,6 @@ import java.net.URL;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -67,9 +67,9 @@ public class MainCtrl implements Initializable {
     @FXML
     private DatePicker dateNaissance;
     @FXML
-    private ComboBox<?> cbxLocalite;
+    private ComboBox<Localite> cbxLocalite;
     @FXML
-    private ComboBox<?> cbxDepartement;
+    private ComboBox<Departement> cbxDepartement;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -89,7 +89,6 @@ public class MainCtrl implements Initializable {
             try {
                 persMan.setListe(dbWrk.lirePersonnes());
                 afficherPersonne(persMan.personneCourante());
-
                 cbxLocalite.getItems().addAll(dbWrk.lireLocalites());
                 cbxDepartement.getItems().addAll(dbWrk.lireDepartements());
             } catch (MyDBException ex) {
@@ -229,7 +228,7 @@ public class MainCtrl implements Initializable {
         p.setActif(ckbActif.isSelected());
 
         try {
-            p.setNorue(Integer.parseInt(txtNo.getText()));
+            p.setNorue(Integer.valueOf(txtNo.getText()));
         } catch (NumberFormatException e) {
             p.setNorue(0);
         }

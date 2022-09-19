@@ -1,3 +1,4 @@
+
 import app.beans.Departement;
 import app.beans.Localite;
 import app.exceptions.MyDBException;
@@ -18,77 +19,77 @@ import org.junit.Test;
 import org.junit.runners.MethodSorters;
 import app.workers.dao.FileDaoItf;
 
-
 /**
- * Classe de test des méthodes de lecture de fichiers "texte"
- * avec séparateur d'information (type csv, txt).
+ * Classe de test des méthodes de lecture de fichiers "texte" avec séparateur
+ * d'information (type csv, txt).
  *
  * @author Jean-Claude Stritt
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class A_FileDaoTest {
-  static final String NOM_DOSSIER_DATA = "data";
-  static final String NOM_FICHIER_LOC = "npa_ch_20140818_utf8.txt";
-  static final String NOM_FICHIER_DEP = "departements_utf8.txt";
 
-  @BeforeClass
-  public static void setUpClass() throws Exception {
-  }
+    static final String NOM_DOSSIER_DATA = "data";
+    static final String NOM_FICHIER_LOC = "npa_ch_20140818_utf8.txt";
+    static final String NOM_FICHIER_DEP = "departements_utf8.txt";
 
-  @AfterClass
-  public static void tearDownClass() throws Exception {
-  }
+    @BeforeClass
+    public static void setUpClass() throws Exception {
+    }
 
-  @Test
-  public void a_testerLireFichierTexteLocalites() throws MyDBException, MyFileException {
-    System.out.println("*** " + SystemLib.getCurrentMethod() + " ...");
+    @AfterClass
+    public static void tearDownClass() throws Exception {
+    }
 
-    // création de l'extracteur de localités
-    LocaliteExtracter locExtr = new LocaliteExtracter("\t");
+    @Test
+    public void a_testerLireFichierTexteLocalites() throws MyDBException, MyFileException {
+        System.out.println("*** " + SystemLib.getCurrentMethod() + " ...");
 
-    // création du worker de fichier
-    FileDaoItf<Localite> ficLocWrk = new FileDao<>(locExtr);
+        // création de l'extracteur de localités
+        LocaliteExtracter locExtr = new LocaliteExtracter("\t");
 
-    // on prepare l'accès vers le fichier
-    Path cheminDossier = Paths.get(NOM_DOSSIER_DATA).toAbsolutePath();
-    String nomFic = cheminDossier + File.separator + NOM_FICHIER_LOC;
-    File ficLoc = new File(nomFic);
+        // création du worker de fichier
+        FileDaoItf<Localite> ficLocWrk = new FileDao<>(locExtr);
 
-    // lecture des localités
-    List<Localite> localites = ficLocWrk.lireFichierTexte(ficLoc, "UTF-8");
+        // on prepare l'accès vers le fichier
+        Path cheminDossier = Paths.get(NOM_DOSSIER_DATA).toAbsolutePath();
+        String nomFic = cheminDossier + File.separator + NOM_FICHIER_LOC;
+        File ficLoc = new File(nomFic);
 
-    // assertion et affichage résultat
-    boolean ok = !localites.isEmpty();
-    if (ok) {
-      System.out.println("  " + localites.size() + " localités lues !");
-    } 
-    assertTrue(ok);
-  }
+        // lecture des localités
+        List<Localite> localites = ficLocWrk.lireFichierTexte(ficLoc, "UTF-8");
 
-  @Test
-  public void b_testerLireFichierTexteDepartements() throws MyDBException, MyFileException {
-    System.out.println("*** " + SystemLib.getCurrentMethod() + " ...");
+        // assertion et affichage résultat
+        boolean ok = !localites.isEmpty();
+        if (ok) {
+            System.out.println("  " + localites.size() + " localités lues !");
+        }
+        assertTrue(ok);
+    }
 
-    // création de l'extracteur de departements
-    DepartementExtracter depExtr = new DepartementExtracter(";");
+    @Test
+    public void b_testerLireFichierTexteDepartements() throws MyDBException, MyFileException {
+        System.out.println("*** " + SystemLib.getCurrentMethod() + " ...");
 
-    // création du worker de fichier
-    FileDaoItf<Departement> ficDepWrk = new FileDao<>(depExtr);
+        // création de l'extracteur de departements
+        DepartementExtracter depExtr = new DepartementExtracter(";");
 
-    // on prepare l'accès vers le fichier
-    Path cheminDossier = Paths.get(NOM_DOSSIER_DATA).toAbsolutePath();
-    String nomFic = cheminDossier + File.separator + NOM_FICHIER_DEP;
-    File ficDep = new File(nomFic);
+        // création du worker de fichier
+        FileDaoItf<Departement> ficDepWrk = new FileDao<>(depExtr);
 
-    // lecture des localités
-    List<Departement> departements = ficDepWrk.lireFichierTexte(ficDep, "UTF-8");
+        // on prepare l'accès vers le fichier
+        Path cheminDossier = Paths.get(NOM_DOSSIER_DATA).toAbsolutePath();
+        String nomFic = cheminDossier + File.separator + NOM_FICHIER_DEP;
+        File ficDep = new File(nomFic);
 
-    // assertion et affichage résultat
-    boolean ok = !departements.isEmpty();
-    if (ok) {
-      System.out.println("  " + departements.size() + " départements lus !");
-    } 
-    assertTrue(ok);
-  }
+        // lecture des localités
+        List<Departement> departements = ficDepWrk.lireFichierTexte(ficDep, "UTF-8");
+
+        // assertion et affichage résultat
+        boolean ok = !departements.isEmpty();
+        if (ok) {
+            System.out.println("  " + departements.size() + " départements lus !");
+        }
+        assertTrue(ok);
+    }
 
 }
